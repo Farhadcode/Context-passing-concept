@@ -1,24 +1,21 @@
 import logo from './logo.svg';
 import './App.css';
+import GrandFather from './Component/GrandFather/GrandFather';
+import { createContext } from 'react';
+import { useState } from 'react';
+export const RingContext = createContext('ring');
 
 function App() {
+  const ornaments = "Gold Ring"
+  const [house, setHouse] = useState(1);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <RingContext.Provider value={[ornaments, house]}>
+      <div className="App">
+        <button onClick={() => setHouse(house + 1)}> Buy a New House</button>
+        <GrandFather></GrandFather>
+      </div>
+    </RingContext.Provider>
   );
 }
 
